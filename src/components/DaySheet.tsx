@@ -78,14 +78,16 @@ export function DaySheet({ date, events, locale, dict, onClose }: Props) {
                   {e.start !== e.end && (
                     <p className="text-sm text-muted">{formatRange(e.start, e.end, locale, dict)}</p>
                   )}
-                  <p className="mt-2 text-[15px] leading-relaxed">{e.short}</p>
+                  {e.short && <p className="mt-2 text-[15px] leading-relaxed">{e.short}</p>}
                   <EventNotes event={e} dict={dict} />
-                  <Link
-                    href={`/${locale}/feasts/${e.slug}`}
-                    className="mt-3 inline-block text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline"
-                  >
-                    {dict.readMore} →
-                  </Link>
+                  {e.category.id !== "national" && (
+                    <Link
+                      href={`/${locale}/feasts/${e.slug}`}
+                      className="mt-3 inline-block text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline"
+                    >
+                      {dict.readMore} →
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

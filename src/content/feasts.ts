@@ -263,6 +263,15 @@ export const feasts: Feast[] = [
       ],
     },
   },
+  // ── National holidays — Պետական տոներ (no feast page; name only) ──
+  { slug: "army-day", categoryId: "national", name: { hy: "Բանակի օր", en: "Army Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
+  { slug: "womens-day", categoryId: "national", name: { hy: "Կանանց տոն", en: "Women's Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
+  { slug: "genocide-remembrance", categoryId: "national", name: { hy: "Եղեռնի զոհերի հիշատակության օր", en: "Armenian Genocide Remembrance Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
+  { slug: "labour-day", categoryId: "national", name: { hy: "Աշխատանքի օր", en: "Labour Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
+  { slug: "victory-peace-day", categoryId: "national", name: { hy: "Հաղթանակի և խաղաղության օր", en: "Victory and Peace Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
+  { slug: "republic-day", categoryId: "national", name: { hy: "Հանրապետության օր", en: "Republic Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
+  { slug: "constitution-day", categoryId: "national", name: { hy: "Սահմանադրության օր", en: "Constitution Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
+  { slug: "independence-day", categoryId: "national", name: { hy: "Անկախության օր", en: "Independence Day" }, short: { hy: "", en: "" }, long: { hy: [], en: [] } },
 ];
 
 export const feastDates: FeastDate[] = [
@@ -279,4 +288,13 @@ export const feastDates: FeastDate[] = [
   { feastSlug: "holy-cross", start: "2027-09-12", end: "2027-09-12" },
   // Green Sunday, Surb Karapet, Holy Translators, Nakhratogh and Amanor
   // have no dates yet — add them here when the team has them.
+  // National holidays (fixed dates)
+  { feastSlug: "army-day", start: "2027-01-28", end: "2027-01-28" },
+  { feastSlug: "womens-day", start: "2027-03-08", end: "2027-03-08" },
+  { feastSlug: "genocide-remembrance", start: "2027-04-24", end: "2027-04-24" },
+  { feastSlug: "labour-day", start: "2027-05-01", end: "2027-05-01" },
+  { feastSlug: "victory-peace-day", start: "2027-05-09", end: "2027-05-09" },
+  { feastSlug: "republic-day", start: "2027-05-28", end: "2027-05-28" },
+  { feastSlug: "constitution-day", start: "2027-07-05", end: "2027-07-05" },
+  { feastSlug: "independence-day", start: "2027-09-21", end: "2027-09-21" },
 ];

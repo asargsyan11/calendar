@@ -25,12 +25,9 @@ export function FeastList({ events, locale, dict }: Props) {
         <ul className="mt-3 flex flex-col gap-2">
           {events.map((e) => {
             const [, m, d] = e.start.split("-").map(Number);
-            return (
-              <li key={e.id}>
-                <Link
-                  href={`/${locale}/feasts/${e.slug}`}
-                  className="flex gap-4 rounded-2xl bg-card p-3 text-ink ring-[var(--accent)] transition-shadow hover:ring-2"
-                >
+            const cls = "flex gap-4 rounded-2xl bg-card p-3 text-ink";
+            const inner = (
+              <>
                   <span
                     className="flex w-14 shrink-0 flex-col items-center justify-center rounded-xl text-white"
                     style={{ background: e.category.color }}
@@ -50,7 +47,20 @@ export function FeastList({ events, locale, dict }: Props) {
                     </span>
                     <EventNotes event={e} dict={dict} />
                   </span>
-                </Link>
+              </>
+            );
+            return (
+              <li key={e.id}>
+                {e.category.id === "national" ? (
+                  <div className={cls}>{inner}</div>
+                ) : (
+                  <Link
+                    href={`/${locale}/feasts/${e.slug}`}
+                    className={`${cls} ring-[var(--accent)] transition-shadow hover:ring-2`}
+                  >
+                    {inner}
+                  </Link>
+                )}
               </li>
             );
           })}

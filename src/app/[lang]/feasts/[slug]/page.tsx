@@ -25,7 +25,7 @@ export default async function FeastPage({ params }: Props) {
   const { lang, slug } = await params;
   if (!isLocale(lang)) notFound();
   const feast = await getFeast(slug);
-  if (!feast) notFound();
+  if (!feast || feast.long[lang].length === 0) notFound();
 
   // Feasts with a full article open it directly instead of the short page.
   if (await getFeastDetails(slug, lang)) redirect(`/${lang}/feasts/${slug}/more`);

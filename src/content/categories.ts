@@ -32,4 +32,9 @@ export const categories: FeastCategory[] = [
     name: { hy: "Ժողովրդական տոներ", en: "Folk traditions" },
     color: "#8A6418", // walnut / ochre
   },
+  {
+    id: "national",
+    name: { hy: "Պետական տոներ", en: "National holidays" },
+    color: "#1F6F6B", // deep teal
+  },
 ];
