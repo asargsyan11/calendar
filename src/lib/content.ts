@@ -8,8 +8,11 @@
 import { categories } from "@/content/categories";
 import { feastDates, feasts } from "@/content/feasts";
 import { monthThemes } from "@/content/month-themes";
+import { feastDetails } from "@/content/feast-details";
+
 import type {
   Feast,
+  DetailBlock,
   FeastCategory,
   FeastDate,
   ISODate,
@@ -84,6 +87,9 @@ export async function getCategory(id: string): Promise<FeastCategory | undefined
   return categories.find((c) => c.id === id);
 }
 
+export async function getFeastDetails(slug: string, locale: Locale): Promise<DetailBlock[] | undefined> {
+  return feastDetails[slug]?.[locale];
+}
 export async function getDatesOf(slug: string): Promise<FeastDate[]> {
   return feastDates
     .filter((d) => d.feastSlug === slug)

@@ -46,6 +46,10 @@ const dictionaries = {
     go: "Գնալ",
     previousYear: "Նախորդ տարի",
     nextYear: "Հաջորդ տարի",
+    fullArticle: "Ավելի մանրամասն",
+    photoSource: "Աղբյուր՝",
+    contents: "Բովանդակություն",
+    backToFeast: "Վերադառնալ տոնին",
   },
   en: {
     siteTitle: "Church Calendar",
@@ -89,6 +93,10 @@ const dictionaries = {
     go: "Go",
     previousYear: "Previous year",
     nextYear: "Next year",
+    fullArticle: "Full article",
+    photoSource: "Source:",
+    contents: "Contents",
+    backToFeast: "Back to the feast",
   },
 } satisfies Record<Locale, unknown>;
 

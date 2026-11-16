@@ -8,6 +8,8 @@ import { formatRange } from "@/i18n/format";
 import { monthPath } from "@/lib/calendar";
 import { getCategory, getDatesOf, getFeast } from "@/lib/content";
 
+
+
 type Props = PageProps<"/[lang]/feasts/[slug]">;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

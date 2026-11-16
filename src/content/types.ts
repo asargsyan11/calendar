@@ -80,3 +80,17 @@ export interface FeastDate {
   /** The Divine Liturgy of the eve (Ճրագալույց) is held the evening before. */
   eveLiturgy?: boolean;
 }
+
+/**
+ * One block of an extended feast article (the "full information" page).
+ * `h4` is a small label above a paragraph. Inside text, **double asterisks**
+ * mean bold.
+ */
+export type DetailBlock =
+  | { type: "p" | "h2" | "h3" | "h4"; text: string }
+  | { type: "ul"; items: string[] }
+  /** A photo in /public/feast-photos; `credit` is shown under it. */
+  | { type: "img"; src: string; width: number; height: number; credit: string };
+
+/** The extended article of a feast. A language is missing until it is added. */
+export type FeastDetails = Partial<Record<Locale, DetailBlock[]>>;
