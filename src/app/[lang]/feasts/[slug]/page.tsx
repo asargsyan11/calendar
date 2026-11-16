@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionary";
@@ -27,11 +27,10 @@ export default async function FeastPage({ params }: Props) {
   const feast = await getFeast(slug);
   if (!feast) notFound();
 
-  const [category, dates, details] = await Promise.all([
-    getCategory(feast.categoryId),
-    getDatesOf(slug),
-    getFeastDetails(slug, lang),
-  ]);
+  // Feasts with a full article open it directly instead of the short page.
+  if (await getFeastDetails(slug, lang)) redirect(`/${lang}/feasts/${slug}/more`);
+
+  const [category, dates] = await Promise.all([getCategory(feast.categoryId), getDatesOf(slug)]);
   const dict = getDictionary(lang);
   const color = category?.color ?? "#9e2333";
 
@@ -61,16 +60,6 @@ export default async function FeastPage({ params }: Props) {
                 <p key={i}>{p}</p>
               ))}
             </div>
-
-            {details && (
-              <Link
-                href={`/${lang}/feasts/${slug}/more`}
-                className="mt-8 inline-block rounded-full px-5 py-2.5 text-sm font-medium text-white"
-                style={{ backgroundColor: color }}
-              >
-                {dict.fullArticle} →
-              </Link>
-            )}
           </div>
         </article>
 

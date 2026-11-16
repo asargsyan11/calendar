@@ -41,8 +41,8 @@ export default async function FeastMorePage({ params }: Props) {
     <div style={{ "--accent": color } as React.CSSProperties}>
       <SiteHeader locale={lang} dict={dict} />
       <main className="mx-auto max-w-2xl px-4 pt-4 pb-16 md:pt-10">
-        <Link href={`/${lang}/feasts/${slug}`} className="text-sm text-cream-muted hover:text-cream">
-          ← {dict.backToFeast}
+        <Link href={`/${lang}`} className="text-sm text-cream-muted hover:text-cream">
+          ← {dict.backToCalendar}
         </Link>
 
         <article className="mt-6 overflow-hidden rounded-2xl bg-card text-ink">
