@@ -6,8 +6,7 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionary";
 import { formatRange } from "@/i18n/format";
 import { monthPath } from "@/lib/calendar";
-import { getCategory, getDatesOf, getFeast } from "@/lib/content";
-
+import { getCategory, getDatesOf, getFeast, getFeastDetails } from "@/lib/content";
 
 
 type Props = PageProps<"/[lang]/feasts/[slug]">;
@@ -28,7 +27,11 @@ export default async function FeastPage({ params }: Props) {
   const feast = await getFeast(slug);
   if (!feast) notFound();
 
-  const [category, dates] = await Promise.all([getCategory(feast.categoryId), getDatesOf(slug)]);
+  const [category, dates, details] = await Promise.all([
+    getCategory(feast.categoryId),
+    getDatesOf(slug),
+    getFeastDetails(slug, lang),
+  ]);
   const dict = getDictionary(lang);
   const color = category?.color ?? "#9e2333";
 
@@ -58,6 +61,16 @@ export default async function FeastPage({ params }: Props) {
                 <p key={i}>{p}</p>
               ))}
             </div>
+
+            {details && (
+              <Link
+                href={`/${lang}/feasts/${slug}/more`}
+                className="mt-8 inline-block rounded-full px-5 py-2.5 text-sm font-medium text-white"
+                style={{ backgroundColor: color }}
+              >
+                {dict.fullArticle} →
+              </Link>
+            )}
           </div>
         </article>
 
